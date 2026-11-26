@@ -1,0 +1,503 @@
+:root{--bg:#f5f3ef;--paper:#fff;--ink:#14141f;--muted:#5d5d70;--line:#e7e4dc;--indigo:#4f46e5;--pink:#ec4899;--mint:#10b981;--r:22px;
+--mono:"JetBrains Mono",ui-monospace,monospace;--sans:"Space Grotesk",system-ui,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg) 
+ linear-gradient(var(--line) 1px,transparent 1px) 0 0/100% 90px;overflow-x:hidden}
+h1,h2,h3,p{margin:0}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--indigo);outline-offset:2px}
+small,.mono,.kicker,.tag,.pill,.badge,code,.btn,label{font-family:var(--mono)}
+small{font-size:.7rem;letter-spacing:.06em;color:var(--muted)}
+main{min-height:100vh;padding-top:90px}
+.section{max-width:1240px;margin:0 auto;padding:56px 24px}
+.row{display:flex;gap:14px;align-items:center}.row.wrap{flex-wrap:wrap}.between{justify-content:space-between}.end{align-items:flex-end}
+.grad{background:linear-gradient(90deg,var(--indigo),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+/* intro */
+.intro{position:fixed;inset:0;z-index:100;background:#14141f;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px}
+.intro-logo{width:76px;height:76px;border-radius:22px;background:linear-gradient(135deg,var(--indigo),var(--pink));display:grid;place-items:center}
+.intro-word{display:flex;font-size:clamp(2rem,6vw,3.6rem);font-weight:700;letter-spacing:.08em}
+.intro-sub{font-family:var(--mono);font-size:.8rem;color:#b7b7c9}
+.intro-bar{width:min(320px,70vw);height:3px;background:linear-gradient(90deg,var(--indigo),var(--pink));transform-origin:left;border-radius:3px}
+/* page wipe */
+.wipe{position:fixed;inset:0;z-index:90;background:linear-gradient(160deg,var(--indigo),var(--pink));pointer-events:none}
+/* nav */
+.nav{position:fixed;top:12px;left:12px;right:12px;z-index:80;max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;
+ padding:12px 22px;background:rgba(255,255,255,.85);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:20px}
+.brand{font-weight:700;display:flex;align-items:center;gap:10px;font-size:1.15rem}
+.brand-icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--indigo),var(--pink))}
+.nav nav{display:flex;gap:6px}.nav nav a{position:relative;padding:8px 14px;color:var(--muted)}.nav nav a.active{color:var(--ink)}
+.underline{position:absolute;left:14px;right:14px;bottom:0;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--indigo),var(--pink))}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:1.2rem}
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+.btn.primary{background:linear-gradient(90deg,var(--indigo),var(--pink));color:#fff;border:0}
+.btn.mint{background:var(--mint);color:#fff;border:0;text-transform:none;letter-spacing:0;padding:9px 16px}
+.btn:disabled{opacity:.6;cursor:wait}
+.pill{display:inline-block;padding:9px 16px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-size:.72rem;letter-spacing:.16em;color:var(--indigo);margin-bottom:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:26px;box-shadow:0 8px 28px rgba(20,20,31,.05)}
+.card.selected{border:2px solid var(--indigo)}
+.lead{color:var(--muted);font-size:1.12rem;line-height:1.55;max-width:60ch}
+.big{font-size:clamp(1.7rem,3.2vw,2.4rem);line-height:1.15;margin:10px 0 14px}
+.tag{font-size:.72rem;font-weight:700;letter-spacing:.1em;color:var(--indigo);background:#eef0ff;padding:5px 10px;border-radius:8px;display:inline-block}
+.badge{font-size:.72rem;padding:5px 11px;border-radius:999px;background:#eef0ff;color:var(--indigo);font-weight:700}
+/* hero */
+.hero-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:48px;align-items:end;margin:28px 0 48px}
+h1{font-size:clamp(2.8rem,7vw,5.4rem);line-height:1.02;letter-spacing:-.03em}
+.hero .row{margin-top:22px}
+.scene-card{position:relative;background:var(--paper);border-radius:34px;padding:22px;border:1px solid var(--line)}
+.scene-art{position:relative;height:460px;border-radius:26px;overflow:hidden;color:#fff;display:flex;align-items:flex-end;padding:34px}
+.house{position:absolute;right:8%;top:14%;width:46%;height:62%;background:rgba(255,255,255,.88);border-radius:10px;display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:22px}
+.house i{background:#1c2540;border-radius:6px}.house i:nth-child(3){grid-column:span 2;background:#f5c542}
+.scene-info{max-width:520px;position:relative;z-index:1;background:rgba(10,10,25,.35);backdrop-filter:blur(6px);padding:20px;border-radius:18px}
+.scene-info h3{font-size:1.7rem;margin-bottom:8px}.scene-info p{opacity:.92;line-height:1.5}
+.scene-tabs{position:absolute;top:42px;left:42px;display:flex;gap:4px;background:rgba(20,20,40,.7);backdrop-filter:blur(8px);padding:6px;border-radius:999px}
+.scene-tabs button{position:relative;border:0;background:none;color:#e5e5f2;padding:9px 18px;border-radius:999px;font-family:var(--mono);font-size:.78rem}
+.scene-tabs button.on{color:var(--ink)}.scene-pill{position:absolute;inset:0;background:#fff;border-radius:999px}.scene-tabs span:not(.scene-pill){position:relative}
+.scene-chip{position:absolute;top:42px;right:42px;background:rgba(20,20,40,.7);color:#fff;padding:11px 18px;border-radius:999px;font-family:var(--mono);font-size:.75rem}
+/* sections */
+.heading{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:34px}
+.kicker{color:var(--indigo);font-size:.78rem;letter-spacing:.18em;margin-bottom:10px}
+h2{font-size:clamp(2rem,5vw,3.6rem);line-height:1.05;letter-spacing:-.02em;max-width:16ch}
+.heading .lead{max-width:44ch;font-size:1.02rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.stat{padding:24px;border-left:3px solid var(--indigo)}.stat strong{display:block;font-size:3.2rem;line-height:1}.stat span{color:var(--muted)}
+.tour,.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tour-card{display:block;height:100%}.tour-card h3{font-size:1.4rem;margin-bottom:10px}.tour-card p{color:var(--muted);line-height:1.5}.arrow{display:block;margin-top:18px;color:var(--indigo);font-family:var(--mono);font-size:.8rem}
+/* problems */
+.problem{cursor:pointer}.problem h3{font-size:1.5rem;margin:16px 0 10px}.problem>p{color:var(--muted);line-height:1.5}
+.problem ul{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:8px}
+.problem li{background:#f7f5f1;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-weight:500}
+.problem li.on{background:#fff;border:2px solid var(--indigo)}
+.detail{display:grid;grid-template-columns:1fr 1.2fr;gap:36px;margin-top:24px;padding:36px;perspective:900px}
+.detail-art{position:relative;min-height:360px;border-radius:20px;background:linear-gradient(135deg,#3b3b4f,#14141f);color:#fff;display:flex;align-items:flex-end;justify-content:space-between;padding:18px;gap:10px}
+.detail-art.smart{background:linear-gradient(135deg,var(--indigo),var(--mint))}.detail-art span{font-family:var(--mono);font-size:.72rem;background:rgba(0,0,0,.45);padding:9px 13px;border-radius:999px}
+.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0 14px}
+.chip-card{text-align:left;border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px;font-weight:500}.chip-card.on{border:2px solid var(--indigo)}.chip-card small{display:block;margin-bottom:4px}
+.counter{display:flex;gap:16px;justify-content:space-between;align-items:center;background:#f7f5f1;border:1px solid var(--line);border-radius:16px;padding:16px 18px}.counter p{margin-top:6px;line-height:1.45}
+/* architecture */
+.flow{position:relative}.flow-line{height:4px;background:var(--line);border-radius:4px;margin:0 0 18px;overflow:hidden}
+.flow-fill{height:100%;background:linear-gradient(90deg,var(--indigo),var(--pink));transform-origin:left}
+.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.layer{text-align:left;padding:20px;font-size:inherit;color:inherit;display:flex;flex-direction:column;gap:10px}
+.layer h3{font-size:1.2rem}.layer p{color:var(--muted);font-size:.9rem;line-height:1.45}.layer.lit{box-shadow:0 0 0 3px rgba(79,70,229,.25)}
+.mini{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}code{font-size:.7rem;background:#f1efea;padding:5px 8px;border-radius:6px}
+.layer-detail{margin-top:22px;display:grid;grid-template-columns:1.5fr 1fr;gap:30px;padding:34px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.card.small{padding:16px;box-shadow:none;display:grid;gap:4px}.card.small span{color:var(--muted);font-size:.9rem}
+.pipeline{border-radius:20px;background:linear-gradient(160deg,#14141f,#2a2250);color:#fff;padding:24px;display:flex;flex-direction:column;gap:10px;justify-content:center}
+.pipeline small{color:#9a9ab5}.stage{font-family:var(--mono);padding:10px 14px;border-radius:10px;background:rgba(255,255,255,.07);color:#b7b7c9}.stage.on{background:#fff;color:var(--ink);font-weight:700}
+/* impact */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.impact{cursor:pointer;min-height:190px}.impact h3{font-size:1.25rem;margin:22px 0 8px}.impact p{color:var(--muted);line-height:1.45}.no{font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+.savings{border:1px solid #c9c5f7;display:flex;flex-direction:column;gap:16px;justify-content:center}
+input[type=range]{width:100%;accent-color:var(--indigo)}
+.money{display:block;font-size:2.6rem;color:var(--indigo);line-height:1.1}.green{color:var(--mint);font-family:var(--mono);font-size:1.1rem}.right{text-align:right}.note{font-size:.8rem;color:var(--muted);line-height:1.4}
+/* feedback */
+.fb-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}.form{display:grid;gap:18px}
+.star{width:52px;height:52px;border-radius:14px;border:1px solid var(--line);background:#fff;color:#d6d3cb;font-size:1.5rem}.star.on{background:#fff7e0;border-color:#f5c542;color:#f59e0b}
+.chip{padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:#fff;font-family:var(--mono);font-size:.82rem}.chip.on{background:linear-gradient(90deg,var(--indigo),#7c3aed);color:#fff;border:0;font-weight:700}
+label{display:grid;gap:8px;font-size:.72rem;letter-spacing:.08em;color:var(--muted)}
+input,select,textarea{font:inherit;font-size:1rem;padding:14px;border-radius:14px;border:1px solid var(--line);background:#fff;color:var(--ink);letter-spacing:0}
+.wall{display:grid;gap:16px;margin-top:14px}.note-card{display:grid;gap:10px}.note-card p{line-height:1.5;color:#2b2b3a}.stars{color:#f59e0b;letter-spacing:3px}
+.ok{color:#047857;font-weight:700}.err,.error-box{color:#be123c;font-weight:700}.error-box{padding:24px;text-align:center}.muted{color:var(--muted);font-size:.78rem}
+.footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:30px 24px;max-width:1240px;margin:0 auto;border-top:1px solid var(--line);font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.footer a{text-decoration:underline}
+/* responsive */
+@media(max-width:1000px){.grid5{grid-template-columns:repeat(2,1fr)}.grid4{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}
+ .hero-grid,.detail,.layer-detail,.fb-grid,.tour,.grid3{grid-template-columns:1fr}.heading{flex-direction:column;align-items:flex-start}}
+@media(max-width:760px){.burger{display:block}.nav-cta{display:none}.nav nav{display:none;position:absolute;top:70px;left:0;right:0;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px}
+ .nav nav.open{display:flex}.grid5,.grid4,.grid2,.chips{grid-template-columns:1fr}.scene-art{height:520px}.scene-tabs{top:30px;left:30px;flex-wrap:wrap;border-radius:20px}.scene-chip{display:none}.row.between{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+
+
+
+
+
+/* ========================================
+   PROBLEMS SECTION
+======================================== */
+
+.problem {
+  cursor: pointer;
+}
+
+.problem h3 {
+  font-size: 1.5rem;
+  margin: 16px 0 10px;
+}
+
+.problem > p {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.problem ul {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+  display: grid;
+  gap: 8px;
+}
+
+.problem li {
+  background: #f7f5f1;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: .25s ease;
+}
+
+.problem li:hover {
+  border-color: var(--indigo);
+}
+
+.problem li.on {
+  background: #fff;
+  border: 2px solid var(--indigo);
+}
+
+/* Detail Layout */
+
+.detail {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 36px;
+  margin-top: 24px;
+  padding: 36px;
+  perspective: 900px;
+}
+
+/* ========================================
+   HOUSE ILLUSTRATION
+======================================== */
+
+.detail-art {
+  position: relative;
+  min-height: 460px;
+  border-radius: 24px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 40%, #424258, transparent 60%),
+    linear-gradient(145deg, #303044, #14141f);
+  color: #fff;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 22px;
+  gap: 10px;
+
+  transition: background .4s ease;
+}
+
+/* Smart Home Background */
+
+.detail-art.smart {
+  background:
+    radial-gradient(circle at 50% 40%, #10b98155, transparent 65%),
+    linear-gradient(145deg, #312e81, #064e3b);
+}
+
+/* House Container */
+
+.house-visual {
+  position: absolute;
+  inset: 25px 15px 95px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  transition: .4s ease;
+}
+
+/* Roof */
+
+.house-roof {
+  position: relative;
+  width: 250px;
+  max-width: 85%;
+  height: 100px;
+
+  background: linear-gradient(135deg, #f8fafc, #94a3b8);
+
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+
+  filter: drop-shadow(0 8px 15px #0005);
+}
+
+.roof-detail {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 8px;
+  height: 75%;
+  background: #64748b;
+  transform: translateX(-50%);
+}
+
+/* House Body */
+
+.house-body {
+  width: 230px;
+  max-width: 90%;
+  min-height: 155px;
+
+  padding: 14px;
+
+  background: linear-gradient(145deg, #e2e8f0, #94a3b8);
+
+  border: 5px solid #f8fafc;
+  border-radius: 5px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+
+  box-shadow: 0 15px 35px #0005;
+}
+
+/* Individual Rooms */
+
+.room {
+  min-height: 55px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  background: #1e293b;
+  border-radius: 9px;
+
+  transition: .35s ease;
+}
+
+.room > span {
+  font-size: 25px;
+  line-height: 1;
+}
+
+.room small {
+  color: #fff;
+  font-size: 9px;
+  letter-spacing: .08em;
+}
+
+/* House Base */
+
+.house-base {
+  width: 260px;
+  max-width: 95%;
+  height: 10px;
+  background: #64748b;
+  border-radius: 50%;
+  margin-top: 8px;
+  filter: blur(2px);
+}
+
+/* ========================================
+   SMART HOME VISUAL STATE
+======================================== */
+
+.detail-art.smart .house-roof {
+  background: linear-gradient(135deg, #d1fae5, #34d399);
+}
+
+.detail-art.smart .house-body {
+  background: linear-gradient(145deg, #d1fae5, #6ee7b7);
+  border-color: #a7f3d0;
+}
+
+.detail-art.smart .room {
+  background: #064e3b;
+  border: 1px solid #34d399;
+  box-shadow: 0 0 14px #10b98155;
+}
+
+.detail-art.smart .house-base {
+  background: #34d399;
+}
+
+/* Smart Connection Indicator */
+
+.smart-indicator {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 9px 13px;
+
+  background: #064e3b;
+  border: 1px solid #34d399;
+  border-radius: 30px;
+
+  color: #a7f3d0;
+
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .05em;
+}
+
+.connection-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 10px #34d399;
+}
+
+/* Illustration Label */
+
+.art-label {
+  position: relative;
+  z-index: 2;
+
+  max-width: 65%;
+
+  font-family: var(--mono);
+  font-size: .72rem;
+  line-height: 1.5;
+
+  background: rgba(0, 0, 0, .55);
+  padding: 10px 13px;
+  border-radius: 30px;
+}
+
+/* Illustration Button */
+
+.detail-art .btn.mint {
+  position: relative;
+  z-index: 2;
+  font-size: .78rem;
+  text-align: center;
+}
+
+/* ========================================
+   DETAIL CONTENT
+======================================== */
+
+.chips {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 22px 0 14px;
+}
+
+.chip-card {
+  text-align: left;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px;
+  font-weight: 500;
+  transition: .2s ease;
+}
+
+.chip-card:hover {
+  border-color: var(--indigo);
+}
+
+.chip-card.on {
+  border: 2px solid var(--indigo);
+}
+
+.chip-card small {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.counter {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  background: #f7f5f1;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px 18px;
+}
+
+.counter p {
+  margin-top: 6px;
+  line-height: 1.45;
+}
+
+/* ========================================
+   RESPONSIVE HOUSE ILLUSTRATION
+======================================== */
+
+@media (max-width: 1000px) {
+  .detail {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-art {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 600px) {
+  .detail {
+    padding: 18px;
+    gap: 24px;
+  }
+
+  .detail-art {
+    min-height: 380px;
+    padding: 14px;
+  }
+
+  .house-roof {
+    width: 200px;
+    height: 80px;
+  }
+
+  .house-body {
+    width: 190px;
+    min-height: 135px;
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .room {
+    min-height: 50px;
+  }
+
+  .room > span {
+    font-size: 21px;
+  }
+
+  .art-label {
+    max-width: 58%;
+    font-size: 9px;
+  }
+
+  .detail-art .btn.mint {
+    padding: 9px 12px;
+    font-size: 10px;
+  }
+
+  .smart-indicator {
+    top: 10px;
+    right: 10px;
+    font-size: 8px;
+  }
+
+  .counter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .chips {
+    grid-template-columns: 1fr;
+  }
+}
